@@ -17,6 +17,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('photos', 'PhotosController@index');
+Route::get('galleries', 'GalleriesController@index');
+Route::get('gallery/{gallery}', 'GalleriesController@show');
+/*
+Route::post('galleries', 'GalleriesController@store');
+Route::put('gallery/{gallery}', 'GalleriesController@update');
+Route::delete('gallery/{gallery}', 'GalleriesController@delete');
+*/
 
+Route::get('photos', 'PhotosController@index');
 Route::get('photo/{photo}', 'PhotosController@show');
+/*
+Route::post('photos', 'PhotosController@store');
+Route::put('photo/{photo}', 'PhotosController@update');
+Route::delete('photo/{photo}', 'PhotosController@delete');
+*/

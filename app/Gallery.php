@@ -4,13 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Photo extends Model {
-    
+class Gallery extends Model
+{
+
     protected $fillable = [
-        'title', 'description', 'location', 'published'
+        'title', 'description', 'published'
     ];
 
     protected $hidden = [
     ];
-
+    
 }
