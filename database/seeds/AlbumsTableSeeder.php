@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Gallery;
+use App\Album;
 
-class GalleriesTableSeeder extends Seeder
+class AlbumsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,12 +12,12 @@ class GalleriesTableSeeder extends Seeder
      */
     public function run()
     {
-        Gallery::create([
+        Album::create([
             'title' => 'Vehikels',
             'description' => 'Broem broem toet bimbambom',
             'published' => TRUE
         ]);
-        Gallery::create([
+        Album::create([
             'title' => 'Etenswaar',
             'description' => 'Nommables',
             'published' => TRUE

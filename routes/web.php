@@ -1,7 +1,5 @@
 <?php
 
-use App\Photo;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,17 +15,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('galleries', 'GalleriesController@index');
-Route::get('gallery/{gallery}', 'GalleriesController@show');
 /*
-Route::post('galleries', 'GalleriesController@store');
-Route::put('gallery/{gallery}', 'GalleriesController@update');
-Route::delete('gallery/{gallery}', 'GalleriesController@delete');
-*/
+Route::get('albums', 'AlbumsController@index');
+Route::get('album/{album}', 'AlbumsController@show');
+// to be moved to api.php (auth middleware)
+Route::post('albums', 'AlbumsController@store');
+Route::put('album/{album}', 'AlbumsController@update');
+Route::delete('album/{album}', 'AlbumsController@delete');
 
 Route::get('photos', 'PhotosController@index');
 Route::get('photo/{photo}', 'PhotosController@show');
-/*
+// to be moved to api.php (auth middleware)
 Route::post('photos', 'PhotosController@store');
 Route::put('photo/{photo}', 'PhotosController@update');
 Route::delete('photo/{photo}', 'PhotosController@delete');

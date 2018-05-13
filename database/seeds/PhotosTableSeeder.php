@@ -17,21 +17,21 @@ class PhotosTableSeeder extends Seeder
             'description' => 'Wat een mooie fiets oooh',
             'location' => 'Groningen city',
             'published' => TRUE,
-            'gallery_id' => 1
+            'album_id' => 1
         ]);
         Photo::create([
             'title' => 'Lelijke auto',
             'description' => 'Wat een lelijke auto BAH',
             'location' => 'Duivendrecht',
             'published' => TRUE,
-            'gallery_id' => 1
+            'album_id' => 1
         ]);
         Photo::create([
             'title' => 'Appeltaart',
             'description' => 'Oma\'s taart vol smurrie',
             'location' => 'Wassenaar',
             'published' => TRUE,
-            'gallery_id' => 2
+            'album_id' => 2
         ]);
     }
 }
