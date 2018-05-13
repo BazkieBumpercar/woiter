@@ -13,14 +13,30 @@ use Illuminate\Http\Request;
 |
 */
 
+/*
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+*/
 
-Route::middleware('auth:api')->post('galleries', 'GalleriesController@store');
-Route::middleware('auth:api')->put('gallery/{gallery}', 'GalleriesController@update');
-Route::middleware('auth:api')->delete('gallery/{gallery}', 'GalleriesController@delete');
+/*
+Route::middleware('auth:api')->post('albums', 'AlbumsController@store');
+Route::middleware('auth:api')->put('album/{album}', 'AlbumsController@update');
+Route::middleware('auth:api')->delete('album/{album}', 'AlbumsController@delete');
 
 Route::middleware('auth:api')->post('photos', 'PhotosController@store');
 Route::middleware('auth:api')->put('photo/{photo}', 'PhotosController@update');
 Route::middleware('auth:api')->delete('photo/{photo}', 'PhotosController@delete');
+*/
+
+Route::get('albums', 'AlbumsController@index');
+Route::get('album/{album}', 'AlbumsController@show');
+Route::post('albums', 'AlbumsController@store');
+Route::put('album/{album}', 'AlbumsController@update');
+Route::delete('album/{album}', 'AlbumsController@delete');
+
+Route::get('photos', 'PhotosController@index');
+Route::get('photo/{photo}', 'PhotosController@show');
+Route::post('photos', 'PhotosController@store');
+Route::put('photo/{photo}', 'PhotosController@update');
+Route::delete('photo/{photo}', 'PhotosController@delete');

@@ -53,6 +53,18 @@ class Handler extends ExceptionHandler
                 'message' => 'Resource not found'
             ], 404);
         }
+        
+        // https://gist.github.com/jrmadsen67/bd0f9ad0ef1ed6bb594e
+        else if ($exception instanceof \Illuminate\Session\TokenMismatchException)
+        {
+            return response()->json([
+                'message' => 'Exception while validating CSRF token'
+            ], 419);
+        //     return redirect()
+        //         ->back()
+        //         ->withInput($request->except('password', '_token'))
+        //         ->withError('Validation Token has expired. Please try again');
+        }
     
         return parent::render($request, $exception);
     }
