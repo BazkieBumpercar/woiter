@@ -1,0 +1,32 @@
+.content {
+  display: flex;
+  flex-direction: row;
+}
+
+.albums {
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+
+.album {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 4%;
+  width: 80%;
+  height: 30%;
+  border: 1px solid #7a8f97;
+  padding: 10%;
+}
+/*
+.album::after {
+  content: "";
+  display: table;
+} */
+
+.album:hover {
+  cursor: pointer;
+}

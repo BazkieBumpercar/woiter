@@ -37,6 +37,7 @@ Route::delete('album/{album}', 'AlbumsController@delete');
 
 Route::get('photos', 'PhotosController@index');
 Route::get('photo/{photo}', 'PhotosController@show');
+Route::get('photos/{album}', 'PhotosController@getByAlbumId');
 Route::post('photos', 'PhotosController@store');
 Route::put('photo/{photo}', 'PhotosController@update');
 Route::delete('photo/{photo}', 'PhotosController@delete');

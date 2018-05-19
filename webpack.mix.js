@@ -11,7 +11,9 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.react('resources/assets/js/app.js', 'public/js')
-   .react('resources/assets/js/bootstrap.js', 'public/js')
-   .styles('resources/assets/css/app.css', 'public/css/app.css');
+mix.react('resources/app.js', 'public/js')
+   .react('resources/assets/bootstrap.js', 'public/js')
+   .styles('resources/app.css', 'public/css/app.css')
+   .styles('resources/components/Frontpage.css', 'public/css/frontpage.css')
+   .styles('resources/components/AlbumViewer.css', 'public/css/albumviewer.css');
 //   .sass('resources/assets/sass/app.scss', 'public/css');

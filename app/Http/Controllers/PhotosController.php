@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use App\Photo;
 
-class PhotosController extends Controller
-{
+use App\Photo;
+use App\Album;
+
+class PhotosController extends Controller {
 
     public function index() {
         return Photo::all();
@@ -15,7 +17,16 @@ class PhotosController extends Controller
     public function show(Photo $photo) {
         return $photo;
     }
-    
+
+    public function getByAlbumId(Album $album) {
+        $result = DB::table('photos')->orderBy('id')->get()->where('album_id', $album['id']);
+        $photos = array();
+        foreach($result as $photo) {
+            $photos[] = $photo;
+        }
+        return $photos;
+    }
+
     public function store(Request $request) {
         $this->validate($request, [
             'title' => 'required|max:255',
