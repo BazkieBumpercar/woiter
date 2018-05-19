@@ -8,11 +8,11 @@
         <title>Woiters wappie fotosite</title>
 
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <link href="{{mix('css/app.css')}}" rel="stylesheet" type="text/css">
-        <script src="{{mix('js/bootstrap.js')}}"></script>
+        <link href="{{mix('/css/app.css')}}" rel="stylesheet" type="text/css">
     </head>
     <body>
         <div class="flex-center position-ref full-height">
+            <!--
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
@@ -22,9 +22,9 @@
                     @endauth
                 </div>
             @endif
-
-            <div id="root"></div>
-            <script src="{{mix('js/app.js')}}"></script>
+            -->
+            <div id="root" class="root"></div>
+            <script src="{{mix('/js/app.js')}}" type="text/javascript"></script>
         </div>
     </body>
 </html>

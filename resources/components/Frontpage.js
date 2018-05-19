@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 
 import Album from './Album';
 import AddAlbum from './AddAlbum';
+import AlbumViewer from './AlbumViewer';
+
+import classes from './Frontpage.css';
 
 class Frontpage extends React.Component {
 
@@ -10,11 +13,14 @@ class Frontpage extends React.Component {
         super();
         this.state = {
             albums: [],
+            viewAlbumId: undefined,
+            viewAlbumData: undefined,
+            loggedIn: false
         }
     }
 
     componentDidMount() { this.reloadAlbums(); }
-    
+
     reloadAlbums() {
         fetch('api/albums')
             .then(response => { return response.json(); })
@@ -22,13 +28,15 @@ class Frontpage extends React.Component {
     }
 
     handleAlbumClick(albumId) {
-        var album = fetch("album/" + albumId)
+        var album = fetch('api/album/' + albumId)
         .then(response => { return response.json(); })
-        .then(album => alert("bliep " + album.title));
+        .then(album => this.setState({
+            viewAlbumId: albumId,
+            viewAlbumData: album
+        }));
     }
 
     addAlbum() {
-        //alert($('meta[name="csrf-token"]').attr('content'));
         fetch('api/albums', {
             method: 'post',
             headers: {
@@ -46,12 +54,33 @@ class Frontpage extends React.Component {
         .then(this.reloadAlbums());
     }
 
+    handleAlbumViewerClose() {
+        this.setState({
+            viewAlbumId: undefined,
+            viewAlbumData: undefined
+        });
+    }
+
     renderAlbums() {
-        return this.state.albums.map(album => {
-            return (
-                <Album key={album.id} album={album} onClick={ () => this.handleAlbumClick(album.id) } />
-            );
-        }).concat(<AddAlbum key='0' onAddAlbum={ () => this.addAlbum() } />);
+
+        const albumViewer = (this.state.viewAlbumId != undefined) ?
+            <AlbumViewer key={this.state.viewAlbumId} albumData={this.state.viewAlbumData} onClose={ () => this.handleAlbumViewerClose() } />
+            : undefined;
+
+        return (
+            <div className='content'>
+                <div className='albums'>
+                    { this.state.albums.map(album => {
+                            return (
+                                <Album key={album.id} album={album} onClick={ () => this.handleAlbumClick(album.id) } />
+                            )
+                        }
+                    )}
+                    { this.state.loggedIn ? <AddAlbum key='0' onAddAlbum={ () => this.addAlbum() } /> : null }
+                </div>
+                { albumViewer }
+            </div>
+        );
     }
 
     render() {
