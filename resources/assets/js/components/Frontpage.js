@@ -14,7 +14,7 @@ class Frontpage extends React.Component {
     }
 
     componentDidMount() { this.reloadAlbums(); }
-    
+
     reloadAlbums() {
         fetch('api/albums')
             .then(response => { return response.json(); })
@@ -22,7 +22,7 @@ class Frontpage extends React.Component {
     }
 
     handleAlbumClick(albumId) {
-        var album = fetch("album/" + albumId)
+        var album = fetch('api/album' + albumId)
         .then(response => { return response.json(); })
         .then(album => alert("bliep " + album.title));
     }
