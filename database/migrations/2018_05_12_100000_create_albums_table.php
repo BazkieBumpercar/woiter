@@ -18,6 +18,7 @@ class CreateAlbumsTable extends Migration
             $table->timestamps();
             $table->string('title');
             $table->string('description');
+            $table->string('url');
             $table->boolean('published');
         });
     }

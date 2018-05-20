@@ -36840,7 +36840,14 @@ var Frontpage = function (_React$Component) {
 
             var albumViewer = this.state.viewAlbumId != undefined ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__AlbumViewer__["a" /* default */], { key: this.state.viewAlbumId, albumData: this.state.viewAlbumData, onClose: function onClose() {
                     return _this4.handleAlbumViewerClose();
-                } }) : undefined;
+                } })
+            /* failed experiment
+            <AlbumViewer key={ this.state.viewAlbumId }
+                         albumData={ this.state.viewAlbumData }
+                         photoData={ () => fetch('api/photos/' + this.state.viewalbumId).then(response => { return response.json() }) }
+                         onClose={ () => this.handleAlbumViewerClose() } />
+            */
+            : undefined;
 
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
@@ -55587,10 +55594,7 @@ var AlbumViewer = function (_React$Component) {
 
         var _this = _possibleConstructorReturn(this, (AlbumViewer.__proto__ || Object.getPrototypeOf(AlbumViewer)).call(this, props));
 
-        _this.albumData = props.albumData;
-        _this.closeHandler = props.onClose;
         _this.state = {
-            albumData: props.albumData,
             photos: []
         };
         return _this;
@@ -55599,7 +55603,7 @@ var AlbumViewer = function (_React$Component) {
     _createClass(AlbumViewer, [{
         key: 'componentDidMount',
         value: function componentDidMount() {
-            this.fetchPhotos(this.state.albumData.id);
+            this.fetchPhotos(this.props.albumData.id);
         }
     }, {
         key: 'fetchPhotos',
@@ -55613,14 +55617,6 @@ var AlbumViewer = function (_React$Component) {
             });
         }
     }, {
-        key: 'handleClose',
-        value: function handleClose() {
-            if (this.closeHandler != undefined) {
-                this.setState({ photos: [] });
-                this.closeHandler();
-            }
-        }
-    }, {
         key: 'render',
         value: function render() {
             var _this3 = this;
@@ -55631,12 +55627,12 @@ var AlbumViewer = function (_React$Component) {
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
                     { className: 'bigtext inline' },
-                    this.state.albumData.title
+                    this.props.albumData.title
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
                     { className: 'close', onClick: function onClick() {
-                            return _this3.handleClose();
+                            return _this3.props.onClose();
                         } },
                     'CLOSE'
                 ),
@@ -55653,6 +55649,11 @@ var AlbumViewer = function (_React$Component) {
                             'p',
                             null,
                             item.description
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'p',
+                            null,
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: "photos/" + _this3.props.albumData.url + "/" + item.url })
                         )
                     );
                 })
@@ -55705,7 +55706,7 @@ exports = module.exports = __webpack_require__(41)(false);
 
 
 // module
-exports.push([module.i, ".albumViewer {\r\n    width: 80%;\r\n    border: 1px solid #7a8f97;\r\n    padding: 20px;\r\n    margin-left: 10px;\r\n}\r\n\r\n.photo {\r\n    border: 1px solid #7a8f97;\r\n    margin-top: 10px;\r\n    margin-bottom: 10px;\r\n}\r\n\r\n.inline {\r\n    display: inline-block;\r\n    width: 90%;\r\n}\r\n\r\n.close {\r\n    display: inline-block;\r\n    width: 10%;\r\n    text-align: right;\r\n    margin-left: auto;\r\n    margin-right: 0;\r\n    cursor: pointer;\r\n}\r\n", ""]);
+exports.push([module.i, ".albumViewer {\r\n    width: 80%;\r\n    border: 1px solid #7a8f97;\r\n    padding: 20px;\r\n    margin-left: 10px;\r\n}\r\n\r\n.photo {\r\n    border: 1px solid #7a8f97;\r\n    margin-top: 16px;\r\n    margin-bottom: 16px;\r\n}\r\n\r\n.inline {\r\n    display: inline-block;\r\n    width: 90%;\r\n}\r\n\r\n.close {\r\n    display: inline-block;\r\n    width: 10%;\r\n    text-align: right;\r\n    margin-left: auto;\r\n    margin-right: 0;\r\n    cursor: pointer;\r\n}\r\n", ""]);
 
 // exports
 

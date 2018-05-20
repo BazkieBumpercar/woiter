@@ -18,8 +18,9 @@ class CreatePhotosTable extends Migration
             $table->timestamps();
             $table->integer('album_id')->unsigned()->default('1');
             $table->string('title');
-            $table->string('description');
+            $table->string('description')->default('no comment');
             $table->string('location');
+            $table->string('url');
             $table->boolean('published');
         });
     }

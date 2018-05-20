@@ -65,6 +65,12 @@ class Frontpage extends React.Component {
 
         const albumViewer = (this.state.viewAlbumId != undefined) ?
             <AlbumViewer key={this.state.viewAlbumId} albumData={this.state.viewAlbumData} onClose={ () => this.handleAlbumViewerClose() } />
+            /* failed experiment
+            <AlbumViewer key={ this.state.viewAlbumId }
+                         albumData={ this.state.viewAlbumData }
+                         photoData={ () => fetch('api/photos/' + this.state.viewalbumId).then(response => { return response.json() }) }
+                         onClose={ () => this.handleAlbumViewerClose() } />
+            */
             : undefined;
 
         return (

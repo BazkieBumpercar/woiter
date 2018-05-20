@@ -7,16 +7,13 @@ class AlbumViewer extends React.Component {
 
     constructor(props) {
         super(props);
-        this.albumData = props.albumData;
-        this.closeHandler = props.onClose;
         this.state = {
-            albumData: props.albumData,
             photos: []
         }
     }
 
     componentDidMount() {
-        this.fetchPhotos(this.state.albumData.id);
+        this.fetchPhotos(this.props.albumData.id);
     }
 
     fetchPhotos(albumId) {
@@ -27,22 +24,17 @@ class AlbumViewer extends React.Component {
                   });
     }
 
-    handleClose() {
-        if (this.closeHandler != undefined) {
-            this.setState({ photos: [] });
-            this.closeHandler();
-        }
-    }
-
     render() {
         return (
             <div className='albumViewer'>
-                <div className='bigtext inline'>{ this.state.albumData.title }</div>
-                <div className='close' onClick={ () => this.handleClose() }>CLOSE</div>
+                <div className='bigtext inline'>{ this.props.albumData.title }</div>
+                <div className='close' onClick={ () => this.props.onClose() }>CLOSE</div>
                 { this.state.photos.map( item => {
                         return (
                             <div key={ item.id } className='photo'>
-                                <p className='bigtext'>{ item.title }</p><p>{ item.description }</p>
+                                <p className='bigtext'>{ item.title }</p>
+                                <p>{ item.description }</p>
+                                <p><img src={ "photos/" + this.props.albumData.url + "/" + item.url } /></p>
                             </div>
                         )
                     }

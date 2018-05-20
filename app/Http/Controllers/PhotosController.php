@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
+use App\Utility\StringHelper;
+
 use App\Photo;
 use App\Album;
 
@@ -34,6 +36,10 @@ class PhotosController extends Controller {
             'location' => 'max:255',
             'published' => 'boolean'
         ]);
+
+        // generate random filename
+        $request['url'] = \App\Utility\StringHelper::createFilename($request['title'] . "_" . base64_encode(random_bytes(4)));
+
         $photo = Photo::create($request->all());
         return response()->json($photo, 201);
     }
