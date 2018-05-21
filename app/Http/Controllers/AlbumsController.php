@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Album;
 
+use App\Utility\StringHelper;
+
 class AlbumsController extends Controller
 {
 
@@ -22,6 +24,9 @@ class AlbumsController extends Controller
             'description' => 'max:255',
             'published' => 'boolean'
         ]);
+
+        $request['url'] = \App\Utility\StringHelper::createFilename($request['title']);
+
         $album = Album::create($request->all());
         return response()->json($album, 201);
     }

@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
+import Dropzone from 'react-dropzone';
 
-//import classes from '/app.css';
-import classes from './AlbumViewer.css';
+import classes from './AlbumEditor.css';
 
-class AlbumViewer extends React.Component {
+class AlbumEditor extends React.Component {
 
     constructor(props) {
         super(props);
@@ -26,7 +26,7 @@ class AlbumViewer extends React.Component {
 
     render() {
         return (
-            <div className='albumViewer'>
+            <div className='albumEditor'>
                 <div className='bigtext inline'>{ this.props.albumData.title }</div>
                 <div className='albumClose' onClick={ () => this.props.closeHandler() }>CLOSE</div>
                 { this.state.photos.map( item => {
@@ -39,10 +39,13 @@ class AlbumViewer extends React.Component {
                         )
                     }
                 )}
+                <Dropzone className='imageDropZone' disablePreview={true} activeStyle={{backgroundColor: '#aaffbb'}} multiple={true} accept="image/*, video/*" onDrop={ (files) => this.props.addPhotosHandler(files, this) }>
+                    Drop new photos here
+                </Dropzone>
             </div>
         );
     }
 
 }
 
-export default AlbumViewer;
+export default AlbumEditor;

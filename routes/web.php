@@ -12,7 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('frontpage');
+    return view('site');
+});
+
+Route::get('/admin/', function () {
+    return view('admin');
 });
 
 /*

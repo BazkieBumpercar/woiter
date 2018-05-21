@@ -8,7 +8,7 @@
         <title>Woiters wappie fotosite</title>
 
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <link href="{{mix('/css/app.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{mix('/css/woiter.css')}}" rel="stylesheet" type="text/css">
     </head>
     <body>
         <div class="flex-center position-ref full-height">
@@ -24,7 +24,7 @@
             @endif
             -->
             <div id="root" class="root"></div>
-            <script src="{{mix('/js/app.js')}}" type="text/javascript"></script>
+            <script src="{{mix('/js/admin.js')}}" type="text/javascript"></script>
         </div>
     </body>
 </html>

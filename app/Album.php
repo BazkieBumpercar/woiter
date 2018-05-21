@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Album extends Model {
 
     protected $fillable = [
-        'title', 'description', 'published'
+        'title', 'description', 'url', 'published'
     ];
 
     protected $hidden = [

@@ -5,9 +5,9 @@ import Album from './Album';
 import AddAlbum from './AddAlbum';
 import AlbumViewer from './AlbumViewer';
 
-import classes from './Frontpage.css';
+import classes from './Site.css';
 
-class Frontpage extends React.Component {
+class Site extends React.Component {
 
     constructor() {
         super();
@@ -27,7 +27,7 @@ class Frontpage extends React.Component {
             .then(albums => { this.setState({ albums: albums }); });
     }
 
-    handleAlbumClick(albumId) {
+    viewAlbum(albumId) {
         var album = fetch('api/album/' + albumId)
         .then(response => { return response.json(); })
         .then(album => this.setState({
@@ -36,25 +36,7 @@ class Frontpage extends React.Component {
         }));
     }
 
-    addAlbum() {
-        fetch('api/albums', {
-            method: 'post',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            body: JSON.stringify({
-                '_token': '{{ csrf_token() }}',
-                'title': 'Nieuwe album',
-                'description': 'Omschrijfle',
-                'published': false
-            })
-        }).then(response => { return response.json(); })
-        .then(this.reloadAlbums());
-    }
-
-    handleAlbumViewerClose() {
+    closeAlbumViewer() {
         this.setState({
             viewAlbumId: undefined,
             viewAlbumData: undefined
@@ -64,7 +46,7 @@ class Frontpage extends React.Component {
     renderAlbums() {
 
         const albumViewer = (this.state.viewAlbumId != undefined) ?
-            <AlbumViewer key={this.state.viewAlbumId} albumData={this.state.viewAlbumData} onClose={ () => this.handleAlbumViewerClose() } />
+            <AlbumViewer key={this.state.viewAlbumId} albumData={this.state.viewAlbumData} closeHandler={ () => this.closeAlbumViewer() } />
             /* failed experiment
             <AlbumViewer key={ this.state.viewAlbumId }
                          albumData={ this.state.viewAlbumData }
@@ -78,7 +60,7 @@ class Frontpage extends React.Component {
                 <div className='albums'>
                     { this.state.albums.map(album => {
                             return (
-                                <Album key={album.id} album={album} onClick={ () => this.handleAlbumClick(album.id) } />
+                                <Album key={album.id} album={album} clickHandler={ () => this.viewAlbum(album.id) } />
                             )
                         }
                     )}
@@ -97,8 +79,8 @@ class Frontpage extends React.Component {
 
 }
 
-export default Frontpage;
+export default Site;
 
 if (document.getElementById('root')) {
-    ReactDOM.render(<Frontpage />, document.getElementById('root'));
+    ReactDOM.render(<Site />, document.getElementById('root'));
 }

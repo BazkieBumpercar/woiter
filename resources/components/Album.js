@@ -13,9 +13,10 @@ class Album extends React.Component {
         }
 
         return (
-            <div className='album' onClick={ () => this.props.onClick() } key={ this.props.album.id } >
+            <div className='album' onClick={ () => this.props.clickHandler() } key={ this.props.album.id } >
                 <p className='bigtext'>{  this.props.album.title }</p>
                 <p>{ this.props.album.description }</p>
+                { this.props.loggedIn && <div className='albumDelete' onClick={ proxy => { proxy.stopPropagation(); this.props.deleteHandler(); } }>DELETE</div> }
             </div>
         );
     }

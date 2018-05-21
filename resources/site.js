@@ -12,4 +12,4 @@ require('./assets/bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-import Frontpage from './components/Frontpage';
+import Site from './components/Site';

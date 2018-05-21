@@ -1,0 +1,38 @@
+.content {
+    display: flex;
+    flex-direction: row;
+}
+
+.albums {
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+.album {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 4%;
+    width: 80%;
+    border: 1px solid #7a8f97;
+    padding: 10%;
+}
+
+.album:hover {
+    cursor: pointer;
+}
+
+.albumDelete {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.albumDelete:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}

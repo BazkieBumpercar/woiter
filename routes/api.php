@@ -31,13 +31,14 @@ Route::middleware('auth:api')->delete('photo/{photo}', 'PhotosController@delete'
 
 Route::get('albums', 'AlbumsController@index');
 Route::get('album/{album}', 'AlbumsController@show');
-Route::post('albums', 'AlbumsController@store');
+Route::post('album', 'AlbumsController@store');
 Route::put('album/{album}', 'AlbumsController@update');
 Route::delete('album/{album}', 'AlbumsController@delete');
 
 Route::get('photos', 'PhotosController@index');
 Route::get('photo/{photo}', 'PhotosController@show');
 Route::get('photos/{album}', 'PhotosController@getByAlbumId');
-Route::post('photos', 'PhotosController@store');
+Route::post('photo', 'PhotosController@store');
+Route::post('photo_imagedata', 'PhotosController@store_imagedata');
 Route::put('photo/{photo}', 'PhotosController@update');
 Route::delete('photo/{photo}', 'PhotosController@delete');

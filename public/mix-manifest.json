@@ -1,7 +1,10 @@
 {
-    "/js/app.js": "/js/app.js",
+    "/js/site.js": "/js/site.js",
+    "/js/admin.js": "/js/admin.js",
     "/js/bootstrap.js": "/js/bootstrap.js",
-    "/css/app.css": "/css/app.css",
-    "/css/frontpage.css": "/css/frontpage.css",
-    "/css/albumviewer.css": "/css/albumviewer.css"
+    "/css/woiter.css": "/css/woiter.css",
+    "/css/site.css": "/css/site.css",
+    "/css/admin.css": "/css/admin.css",
+    "/css/albumviewer.css": "/css/albumviewer.css",
+    "/css/albumeditor.css": "/css/albumeditor.css"
 }

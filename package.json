@@ -18,10 +18,12 @@
         "laravel-mix": "^2.0",
         "lodash": "^4.17.4",
         "popper.js": "^1.12",
-        "react": "^16.2.0",
+        "react": "^16.3.2",
         "react-dom": "^16.2.0"
     },
     "dependencies": {
-        "npm": "^6.0.1"
+        "npm": "^6.0.1",
+        "react-dropzone": "^4.2.9",
+        "superagent": "^3.8.3"
     }
 }
