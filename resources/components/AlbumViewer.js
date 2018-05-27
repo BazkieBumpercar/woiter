@@ -29,12 +29,12 @@ class AlbumViewer extends React.Component {
             <div className='albumViewer'>
                 <div className='bigtext inline'>{ this.props.albumData.title }</div>
                 <div className='albumClose' onClick={ () => this.props.closeHandler() }>CLOSE</div>
-                { this.state.photos.map( item => {
+                { this.state.photos.map( photo => {
                         return (
-                            <div key={ item.id } className='photo'>
-                                <p className='bigtext'>{ item.title }</p>
-                                <p>{ item.description }</p>
-                                <p><img src={ "photos/" + this.props.albumData.url + "/" + item.url } /></p>
+                            <div key={ photo.id } className='photo'>
+                                <p className='bigtext'>{ photo.title }</p>
+                                <p>{ photo.description }</p>
+                                <p><img src={ "photos/" + this.props.albumData.url + "/" + photo.url } /></p>
                             </div>
                         )
                     }

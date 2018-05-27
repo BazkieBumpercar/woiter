@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Album;
 
 use App\Utility\StringHelper;
+
 
 class AlbumsController extends Controller
 {
@@ -37,6 +39,13 @@ class AlbumsController extends Controller
     }
 
     public function delete(Album $album) {
+        $result = DB::table('photos')->get()->where('album_id', $album['id']);
+        foreach($result as $photo) {
+            $filename = 'photos/' . $album['url'] . '/' . $photo->url;
+            if (file_exists($filename)) unlink($filename);
+        }
+        rmdir('photos/' . $album['url']);
+
         $album->delete();
         return response()->json(null, 204);
     }

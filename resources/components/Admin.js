@@ -46,6 +46,15 @@ class Admin extends React.Component {
         .then(this.reloadAlbums());
     }
 
+    deletePhoto(photoId, senderComponent) {
+        fetch('api/photo/' + photoId, {
+            method: 'delete'
+        })
+        .then(senderComponent.fetchPhotos(this.state.viewAlbumId));
+        //.then(albumId == this.state.viewAlbumId && this.closeAlbumViewer())
+        //.then(this.reloadAlbums());
+    }
+
     addAlbum() {
         fetch('api/album', {
             method: 'post',
@@ -77,6 +86,8 @@ class Admin extends React.Component {
 
     albumAddPhotos(files, senderComponent) {
         console.log(files);
+        let count = 0;
+        const reload = () => senderComponent.fetchPhotos(this.state.viewAlbumId);
         files.forEach((image) => {
             //console.log(image);
 
@@ -103,21 +114,29 @@ class Admin extends React.Component {
                         'location': 'Oberon',
                         'url': image['name'],
                         'published': false,
-                        //'tmp_url': image.preview
                     })
                 })
-                .then(response => { return response.json(); })
-                .then(window.URL.revokeObjectURL(image.preview))
-                .then(() => senderComponent.fetchPhotos(this.state.viewAlbumId))
-            );
 
-        });
+            )//.then(response => { return response.json(); })
+            //.then(window.URL.revokeObjectURL(image.preview))
+            //.then(() => senderComponent.fetchPhotos(this.state.viewAlbumId));
+
+            count++;
+            if (count === files.length) reload();
+        }
+
+        );//.then(() => senderComponent.fetchPhotos(this.state.viewAlbumId));
+
     }
 
     renderAlbums() {
 
         const albumEditor = (this.state.viewAlbumId != undefined) ?
-            <AlbumEditor key={this.state.viewAlbumId} albumData={this.state.viewAlbumData} closeHandler={ () => this.closeAlbumViewer() } addPhotosHandler={ (files, senderComponent) => this.albumAddPhotos(files, senderComponent) } />
+            <AlbumEditor key={this.state.viewAlbumId} albumData={this.state.viewAlbumData}
+                closeHandler={ () => this.closeAlbumViewer() }
+                addPhotosHandler={ (files, senderComponent) => this.albumAddPhotos(files, senderComponent) }
+                deletePhotoHandler={ (photoId, senderComponent) => this.deletePhoto(photoId, senderComponent) }
+            />
             : undefined;
 
         return (

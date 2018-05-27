@@ -76,6 +76,11 @@ class PhotosController extends Controller {
     }
 
     public function delete(Photo $photo) {
+        $result = DB::table('albums')->get()->where('id', $photo->album_id);
+        $album = $result->first();
+        $filename = 'photos/' . $album->url . '/' . $photo->url;
+        if (file_exists($filename)) unlink($filename);
+
         $photo->delete();
         return response()->json(null, 204);
     }
