@@ -55267,8 +55267,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
-//const Album = ({ album }) => {
-
 var Album = function (_React$Component) {
     _inherits(Album, _React$Component);
 
@@ -55715,6 +55713,38 @@ var Admin = function (_React$Component) {
             }); //.then(() => senderComponent.fetchPhotos(this.state.viewAlbumId));
         }
     }, {
+        key: 'albumChangeTitle',
+        value: function albumChangeTitle(newTitle) {
+            fetch('api/album/' + this.state.viewAlbumId, {
+                method: 'put',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                    //'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                body: JSON.stringify({
+                    //'_token': '{{ csrf_token() }}',
+                    'title': newTitle
+                })
+            }).then(this.reloadAlbums());
+        }
+    }, {
+        key: 'albumChangeDescription',
+        value: function albumChangeDescription(newDescription) {
+            fetch('api/album/' + this.state.viewAlbumId, {
+                method: 'put',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                    //'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                body: JSON.stringify({
+                    //'_token': '{{ csrf_token() }}',
+                    'description': newDescription
+                })
+            }).then(this.reloadAlbums());
+        }
+    }, {
         key: 'renderAlbums',
         value: function renderAlbums() {
             var _this6 = this;
@@ -55728,6 +55758,12 @@ var Admin = function (_React$Component) {
                 },
                 deletePhotoHandler: function deletePhotoHandler(photoId, senderComponent) {
                     return _this6.deletePhoto(photoId, senderComponent);
+                },
+                albumTitleChangeHandler: function albumTitleChangeHandler(newTitle) {
+                    return _this6.albumChangeTitle(newTitle);
+                },
+                albumDescriptionChangeHandler: function albumDescriptionChangeHandler(newDescription) {
+                    return _this6.albumChangeDescription(newDescription);
                 }
             }) : undefined;
 
@@ -57842,6 +57878,10 @@ var AlbumEditor = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (AlbumEditor.__proto__ || Object.getPrototypeOf(AlbumEditor)).call(this, props));
 
         _this.state = {
+            album: {
+                title: _this.props.albumData.title,
+                description: _this.props.albumData.description
+            },
             photos: []
         };
         return _this;
@@ -57873,8 +57913,25 @@ var AlbumEditor = function (_React$Component) {
                 { className: 'albumEditor' },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
-                    { className: 'bigtext inline' },
-                    this.props.albumData.title
+                    null,
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'text', className: 'bigtext fullwidth', value: this.state.album.title,
+                        onChange: function onChange(event) {
+                            return _this3.setState({ album: { title: event.target.value } });
+                        },
+                        onBlur: function onBlur(event) {
+                            return _this3.props.albumTitleChangeHandler(event.target.value);
+                        } })
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'div',
+                    null,
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('textarea', { className: 'fullwidth', value: this.state.album.description,
+                        onChange: function onChange(event) {
+                            return _this3.setState({ album: { description: event.target.value } });
+                        },
+                        onBlur: function onBlur(event) {
+                            return _this3.props.albumDescriptionChangeHandler(event.target.value);
+                        } })
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
@@ -59297,7 +59354,7 @@ exports = module.exports = __webpack_require__(41)(false);
 
 
 // module
-exports.push([module.i, ".albumEditor {\r\n    position: relative;\r\n    width: 80%;\r\n    border: 1px solid #7a8f97;\r\n    padding: 20px;\r\n    margin-left: 10px;\r\n}\r\n\r\n.photo {\r\n    position: relative;\r\n    border: 1px solid #7a8f97;\r\n    margin-top: 16px;\r\n    margin-bottom: 16px;\r\n}\r\n\r\n.inline {\r\n    display: inline-block;\r\n    width: 90%;\r\n}\r\n\r\n.albumClose {\r\n    position: absolute;\r\n    top: 10px;\r\n    right: 10px;\r\n}\r\n\r\n.albumClose:hover {\r\n    cursor: pointer;\r\n    text-decoration: underline;\r\n}\r\n\r\n.photoDelete {\r\n    position: absolute;\r\n    top: 10px;\r\n    right: 10px;\r\n}\r\n\r\n.photoDelete:hover {\r\n    cursor: pointer;\r\n    text-decoration: underline;\r\n}\r\n\r\n.imageDropZone {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    width: 100%;\r\n    height: 80px;\r\n    border: 3px dotted #81b7ce;\r\n    margin: auto;\r\n}\r\n\r\n.imageDropZone:active {\r\n    background-color: red;\r\n}", ""]);
+exports.push([module.i, ".albumEditor {\r\n    position: relative;\r\n    width: 80%;\r\n    border: 1px solid #7a8f97;\r\n    padding: 20px;\r\n    margin-left: 10px;\r\n}\r\n\r\n.photo {\r\n    position: relative;\r\n    border: 1px solid #7a8f97;\r\n    margin-top: 16px;\r\n    margin-bottom: 16px;\r\n}\r\n\r\n.albumClose {\r\n    position: absolute;\r\n    top: 10px;\r\n    right: 10px;\r\n}\r\n\r\n.albumClose:hover {\r\n    cursor: pointer;\r\n    text-decoration: underline;\r\n}\r\n\r\n.photoDelete {\r\n    position: absolute;\r\n    top: 10px;\r\n    right: 10px;\r\n}\r\n\r\n.photoDelete:hover {\r\n    cursor: pointer;\r\n    text-decoration: underline;\r\n}\r\n\r\n.fullwidth {\r\n    width: 100%;\r\n}\r\n\r\n.imageDropZone {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    width: 100%;\r\n    height: 80px;\r\n    border: 3px dotted #81b7ce;\r\n    margin: auto;\r\n}\r\n\r\n.imageDropZone:active {\r\n    background-color: red;\r\n}", ""]);
 
 // exports
 

@@ -8,6 +8,10 @@ class AlbumEditor extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            album: {
+                title: this.props.albumData.title,
+                description: this.props.albumData.description
+            },
             photos: []
         }
     }
@@ -27,7 +31,16 @@ class AlbumEditor extends React.Component {
     render() {
         return (
             <div className='albumEditor'>
-                <div className='bigtext inline'>{ this.props.albumData.title }</div>
+                <div>
+                    <input type="text" className="bigtext fullwidth" value={ this.state.album.title }
+                        onChange={ (event) => this.setState({album: {title: event.target.value}}) }
+                        onBlur={ (event) => this.props.albumTitleChangeHandler(event.target.value) } />
+                </div>
+                <div>
+                    <textarea className="fullwidth" value={ this.state.album.description }
+                        onChange={ (event) => this.setState({album: {description: event.target.value}}) }
+                        onBlur={ (event) => this.props.albumDescriptionChangeHandler(event.target.value) } />
+                </div>
                 <div className='albumClose' onClick={ () => this.props.closeHandler() }>CLOSE</div>
                 { this.state.photos.map( photo => {
                         return (

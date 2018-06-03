@@ -126,7 +126,36 @@ class Admin extends React.Component {
         }
 
         );//.then(() => senderComponent.fetchPhotos(this.state.viewAlbumId));
+    }
 
+    albumChangeTitle(newTitle) {
+        fetch('api/album/' + this.state.viewAlbumId, {
+            method: 'put',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+                //'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            body: JSON.stringify({
+                //'_token': '{{ csrf_token() }}',
+                'title': newTitle
+            })
+        }).then(this.reloadAlbums());
+    }
+
+    albumChangeDescription(newDescription) {
+        fetch('api/album/' + this.state.viewAlbumId, {
+            method: 'put',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+                //'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            body: JSON.stringify({
+                //'_token': '{{ csrf_token() }}',
+                'description': newDescription
+            })
+        }).then(this.reloadAlbums());
     }
 
     renderAlbums() {
@@ -136,6 +165,8 @@ class Admin extends React.Component {
                 closeHandler={ () => this.closeAlbumViewer() }
                 addPhotosHandler={ (files, senderComponent) => this.albumAddPhotos(files, senderComponent) }
                 deletePhotoHandler={ (photoId, senderComponent) => this.deletePhoto(photoId, senderComponent) }
+                albumTitleChangeHandler={ (newTitle) => this.albumChangeTitle(newTitle) }
+                albumDescriptionChangeHandler={ (newDescription) => this.albumChangeDescription(newDescription) }
             />
             : undefined;
 

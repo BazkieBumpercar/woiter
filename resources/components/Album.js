@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-//const Album = ({ album }) => {
 class Album extends React.Component {
 
     constructor(props) {

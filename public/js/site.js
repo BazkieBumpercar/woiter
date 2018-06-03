@@ -55267,8 +55267,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
-//const Album = ({ album }) => {
-
 var Album = function (_React$Component) {
     _inherits(Album, _React$Component);
 

@@ -13,11 +13,6 @@
     margin-bottom: 16px;
 }
 
-.inline {
-    display: inline-block;
-    width: 90%;
-}
-
 .albumClose {
     position: absolute;
     top: 10px;
@@ -38,6 +33,10 @@
 .photoDelete:hover {
     cursor: pointer;
     text-decoration: underline;
+}
+
+.fullwidth {
+    width: 100%;
 }
 
 .imageDropZone {

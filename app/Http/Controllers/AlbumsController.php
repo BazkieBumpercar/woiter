@@ -27,9 +27,13 @@ class AlbumsController extends Controller
             'published' => 'boolean'
         ]);
 
-        $request['url'] = \App\Utility\StringHelper::createFilename($request['title']);
+        $request['url'] = "temporary_url";//\App\Utility\StringHelper::createFilename($request['title']);
 
         $album = Album::create($request->all());
+
+        $album->url = "album" . $album->id;
+        $album->save();
+
         return response()->json($album, 201);
     }
 
@@ -44,7 +48,7 @@ class AlbumsController extends Controller
             $filename = 'photos/' . $album['url'] . '/' . $photo->url;
             if (file_exists($filename)) unlink($filename);
         }
-        rmdir('photos/' . $album['url']);
+        @rmdir('photos/' . $album['url']);
 
         $album->delete();
         return response()->json(null, 204);
