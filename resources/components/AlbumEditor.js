@@ -13,7 +13,8 @@ class AlbumEditor extends React.Component {
                 title: this.props.albumData.title,
                 description: this.props.albumData.description
             },
-            photos: []
+            photos: [],
+            confirmDelete: []
         }
     }
 
@@ -26,7 +27,8 @@ class AlbumEditor extends React.Component {
             .then(response => { return response.json(); } )
             .then(photos => {
                     this.setState({ photos: photos })
-                  });
+                  })
+            .then(() => { let confirmDelete = this.state.photos.map(item => { return false; }); this.setState({confirmDelete: confirmDelete}); });
     }
 
     render() {
@@ -43,10 +45,12 @@ class AlbumEditor extends React.Component {
                         onBlur={ (event) => this.props.albumDescriptionChangeHandler(event.target.value) } />
                 </div>
                 <div className='albumClose' onClick={ () => this.props.closeHandler() }>CLOSE</div>
-                { this.state.photos.map( photo => {
+                { this.state.photos.map( (photo, index) => {
                         return (
                             <div key={ photo.id } className='photo'>
-                                <div className='photoDelete' onClick={ () => this.props.deletePhotoHandler(photo.id, this) }>DELETE</div>
+                                { this.state.confirmDelete[index] == false && <div className='photoDelete' onClick={ proxy => { proxy.stopPropagation(); let confirmDelete = [...this.state.confirmDelete]; confirmDelete[index] = true; this.setState({confirmDelete: confirmDelete}); } }>DELETE</div> }
+                                { this.state.confirmDelete[index] == true && <div className='photoDelete' onClick={ proxy => { proxy.stopPropagation(); this.props.deletePhotoHandler(photo.id, this) } } onMouseOut={ () => { let confirmDelete = [...this.state.confirmDelete]; confirmDelete[index] = false; this.setState({confirmDelete: confirmDelete}) } }>R U SURE?!</div> }
+                                {/*<div className='photoDelete' onClick={ () => this.props.deletePhotoHandler(photo.id, this) }>DELETE</div>*/}
                                 <p className='bigtext'>{ photo.title }</p>
                                 <p>{ photo.description }</p>
                                 <p><img className='image' src={ "photos/" + this.props.albumData.url + "/" + photo.url } /></p>

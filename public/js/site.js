@@ -55273,7 +55273,12 @@ var Album = function (_React$Component) {
     function Album(props) {
         _classCallCheck(this, Album);
 
-        return _possibleConstructorReturn(this, (Album.__proto__ || Object.getPrototypeOf(Album)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (Album.__proto__ || Object.getPrototypeOf(Album)).call(this, props));
+
+        _this.state = {
+            confirmDelete: false
+        };
+        return _this;
     }
 
     _createClass(Album, [{
@@ -55308,12 +55313,21 @@ var Album = function (_React$Component) {
                     null,
                     this.props.album.description
                 ),
-                this.props.loggedIn && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                this.props.loggedIn && this.state.confirmDelete == false && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'div',
+                    { className: 'albumDelete', onClick: function onClick(proxy) {
+                            proxy.stopPropagation();_this2.setState({ confirmDelete: true });
+                        } },
+                    'DELETE'
+                ),
+                this.props.loggedIn && this.state.confirmDelete == true && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
                     { className: 'albumDelete', onClick: function onClick(proxy) {
                             proxy.stopPropagation();_this2.props.deleteHandler();
+                        }, onMouseOut: function onMouseOut() {
+                            return _this2.setState({ confirmDelete: false });
                         } },
-                    'DELETE'
+                    'R U SURE?!'
                 )
             );
         }

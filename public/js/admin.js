@@ -55273,7 +55273,12 @@ var Album = function (_React$Component) {
     function Album(props) {
         _classCallCheck(this, Album);
 
-        return _possibleConstructorReturn(this, (Album.__proto__ || Object.getPrototypeOf(Album)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (Album.__proto__ || Object.getPrototypeOf(Album)).call(this, props));
+
+        _this.state = {
+            confirmDelete: false
+        };
+        return _this;
     }
 
     _createClass(Album, [{
@@ -55308,12 +55313,21 @@ var Album = function (_React$Component) {
                     null,
                     this.props.album.description
                 ),
-                this.props.loggedIn && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                this.props.loggedIn && this.state.confirmDelete == false && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'div',
+                    { className: 'albumDelete', onClick: function onClick(proxy) {
+                            proxy.stopPropagation();_this2.setState({ confirmDelete: true });
+                        } },
+                    'DELETE'
+                ),
+                this.props.loggedIn && this.state.confirmDelete == true && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
                     { className: 'albumDelete', onClick: function onClick(proxy) {
                             proxy.stopPropagation();_this2.props.deleteHandler();
+                        }, onMouseOut: function onMouseOut() {
+                            return _this2.setState({ confirmDelete: false });
                         } },
-                    'DELETE'
+                    'R U SURE?!'
                 )
             );
         }
@@ -57949,6 +57963,8 @@ module.exports = Agent;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__AlbumEditor_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__AlbumEditor_css__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -57974,7 +57990,8 @@ var AlbumEditor = function (_React$Component) {
                 title: _this.props.albumData.title,
                 description: _this.props.albumData.description
             },
-            photos: []
+            photos: [],
+            confirmDelete: []
         };
         return _this;
     }
@@ -57993,6 +58010,10 @@ var AlbumEditor = function (_React$Component) {
                 return response.json();
             }).then(function (photos) {
                 _this2.setState({ photos: photos });
+            }).then(function () {
+                var confirmDelete = _this2.state.photos.map(function (item) {
+                    return false;
+                });_this2.setState({ confirmDelete: confirmDelete });
             });
         }
     }, {
@@ -58032,16 +58053,25 @@ var AlbumEditor = function (_React$Component) {
                         } },
                     'CLOSE'
                 ),
-                this.state.photos.map(function (photo) {
+                this.state.photos.map(function (photo, index) {
                     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',
                         { key: photo.id, className: 'photo' },
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        _this3.state.confirmDelete[index] == false && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'div',
-                            { className: 'photoDelete', onClick: function onClick() {
-                                    return _this3.props.deletePhotoHandler(photo.id, _this3);
+                            { className: 'photoDelete', onClick: function onClick(proxy) {
+                                    proxy.stopPropagation();var confirmDelete = [].concat(_toConsumableArray(_this3.state.confirmDelete));confirmDelete[index] = true;_this3.setState({ confirmDelete: confirmDelete });
                                 } },
                             'DELETE'
+                        ),
+                        _this3.state.confirmDelete[index] == true && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'div',
+                            { className: 'photoDelete', onClick: function onClick(proxy) {
+                                    proxy.stopPropagation();_this3.props.deletePhotoHandler(photo.id, _this3);
+                                }, onMouseOut: function onMouseOut() {
+                                    var confirmDelete = [].concat(_toConsumableArray(_this3.state.confirmDelete));confirmDelete[index] = false;_this3.setState({ confirmDelete: confirmDelete });
+                                } },
+                            'R U SURE?!'
                         ),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'p',
