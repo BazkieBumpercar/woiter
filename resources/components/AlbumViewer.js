@@ -27,7 +27,7 @@ class AlbumViewer extends React.Component {
     render() {
         return (
             <div className='albumViewer'>
-                <div className='bigtext inline'>{ this.props.albumData.title }</div>
+                <div className='bigtext'>{ this.props.albumData.title }</div>
                 <div className='albumClose' onClick={ () => this.props.closeHandler() }>CLOSE</div>
                 { this.state.photos.map( photo => {
                         return (

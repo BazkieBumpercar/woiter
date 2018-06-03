@@ -55707,7 +55707,7 @@ var AlbumViewer = function (_React$Component) {
                 { className: 'albumViewer' },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
-                    { className: 'bigtext inline' },
+                    { className: 'bigtext' },
                     this.props.albumData.title
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -55787,7 +55787,7 @@ exports = module.exports = __webpack_require__(41)(false);
 
 
 // module
-exports.push([module.i, ".albumViewer {\r\n    position: relative;\r\n    width: 80%;\r\n    border: 1px solid #7a8f97;\r\n    padding: 20px;\r\n    margin-left: 10px;\r\n}\r\n\r\n.photo {\r\n    border: 1px solid #7a8f97;\r\n    margin-top: 16px;\r\n    margin-bottom: 16px;\r\n}\r\n\r\n.inline {\r\n    display: inline-block;\r\n    width: 90%;\r\n}\r\n\r\n.albumClose {\r\n    position: absolute;\r\n    top: 10px;\r\n    right: 10px;\r\n}\r\n\r\n.albumClose:hover {\r\n    cursor: pointer;\r\n    text-decoration: underline;\r\n}", ""]);
+exports.push([module.i, ".albumViewer {\r\n    position: relative;\r\n    width: 80%;\r\n    border: 1px solid #7a8f97;\r\n    padding: 20px;\r\n    margin-left: 10px;\r\n}\r\n\r\n.photo {\r\n    position: relative;\r\n    border: 1px solid #7a8f97;\r\n    margin-top: 16px;\r\n    margin-bottom: 16px;\r\n}\r\n\r\n.image {\r\n    max-width: 512px;\r\n}\r\n\r\n.albumClose {\r\n    position: absolute;\r\n    top: 10px;\r\n    right: 10px;\r\n}\r\n\r\n.albumClose:hover {\r\n    cursor: pointer;\r\n    text-decoration: underline;\r\n}", ""]);
 
 // exports
 
@@ -55832,7 +55832,7 @@ exports = module.exports = __webpack_require__(41)(false);
 
 
 // module
-exports.push([module.i, ".content {\r\n    display: flex;\r\n    flex-direction: row;\r\n}\r\n\r\n.albums {\r\n    margin-left: auto;\r\n    margin-right: auto;\r\n    width: 20%;\r\n    display: flex;\r\n    flex-direction: column;\r\n    flex-wrap: nowrap;\r\n}\r\n\r\n.album {\r\n    margin-left: auto;\r\n    margin-right: auto;\r\n    margin-bottom: 4%;\r\n    width: 80%;\r\n    height: 30%;\r\n    border: 1px solid #7a8f97;\r\n    padding: 10%;\r\n}\r\n\r\n.album:hover {\r\n    cursor: pointer;\r\n}\r\n", ""]);
+exports.push([module.i, "html, body {\r\n    background-color: #fff;\r\n    height: max-content;\r\n}\r\n\r\nbody {\r\n    margin: 1%;\r\n    padding: 0;\r\n    color: #21282b;\r\n    font-family: sans-serif;\r\n    font-size: medium;\r\n}\r\n\r\np {\r\n    margin-top: 0.0em;\r\n    margin-bottom: 0.4em;\r\n}\r\n\r\n.links > a {\r\n    color: #2c4863;\r\n    text-decoration: underline;\r\n}\r\n\r\n.bigtext {\r\n    font-size: large;\r\n}\r\n\r\n.root {\r\n    width: 100%;\r\n}\r\n\r\n.content {\r\n    display: flex;\r\n    flex-direction: row;\r\n}\r\n\r\n.albums {\r\n    margin-left: auto;\r\n    margin-right: auto;\r\n    width: 20%;\r\n    display: flex;\r\n    flex-direction: column;\r\n    flex-wrap: nowrap;\r\n}\r\n\r\n.album {\r\n    position: relative;\r\n    margin-left: auto;\r\n    margin-right: auto;\r\n    margin-bottom: 4%;\r\n    width: 80%;\r\n    border: 1px solid #7a8f97;\r\n    padding: 10%;\r\n}\r\n\r\n.album:hover {\r\n    cursor: pointer;\r\n}\r\n", ""]);
 
 // exports
 

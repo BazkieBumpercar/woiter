@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import Dropzone from 'react-dropzone';
 
-import classes from './AlbumEditor.css';
+import classes_albumviewer from './AlbumViewer.css';
+import classes_albumeditor from './AlbumEditor.css';
 
 class AlbumEditor extends React.Component {
 
@@ -30,7 +31,7 @@ class AlbumEditor extends React.Component {
 
     render() {
         return (
-            <div className='albumEditor'>
+            <div className='albumViewer'>
                 <div>
                     <input type="text" className="bigtext fullwidth" value={ this.state.album.title }
                         onChange={ (event) => this.setState({album: {title: event.target.value}}) }
@@ -48,7 +49,7 @@ class AlbumEditor extends React.Component {
                                 <div className='photoDelete' onClick={ () => this.props.deletePhotoHandler(photo.id, this) }>DELETE</div>
                                 <p className='bigtext'>{ photo.title }</p>
                                 <p>{ photo.description }</p>
-                                <p><img src={ "photos/" + this.props.albumData.url + "/" + photo.url } /></p>
+                                <p><img className='image' src={ "photos/" + this.props.albumData.url + "/" + photo.url } /></p>
                             </div>
                         )
                     }

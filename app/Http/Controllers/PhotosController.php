@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Intervention\Image\ImageManagerStatic as Image;
 
 use App\Utility\StringHelper;
+use App\Utility\PhotoHelper;
 
 use App\Photo;
 use App\Album;
@@ -42,7 +43,7 @@ class PhotosController extends Controller {
         ]);
 
         // generate random filename
-        if (!isset($request['url'])) $request['url'] = \App\Utility\StringHelper::createFilename($request['title'] . "_" . base64_encode(random_bytes(4)));
+        if (!isset($request['url'])) $request['url'] = StringHelper::createFilename($request['title'] . "_" . base64_encode(random_bytes(4)));
 
         $photo = Photo::create($request->all());
 
@@ -65,7 +66,12 @@ class PhotosController extends Controller {
         }
 
         $filename = $request['filename'];
-        $image->fit(300)->save('photos/' . $directory . '/' . $filename);
+        $uri = 'photos/' . $directory . '/' . $filename;
+        $image->save($uri);
+        // $image_thumb = Image::cache(function($image) {
+        //     $image->make('photos/' . $directory . '/' . $filename
+        // });
+        $image->fit(64)->greyscale()->save(PhotoHelper::smallifyUri($uri));
 
         return response()->json(null, 201);
     }
@@ -76,10 +82,8 @@ class PhotosController extends Controller {
     }
 
     public function delete(Photo $photo) {
-        $result = DB::table('albums')->get()->where('id', $photo->album_id);
-        $album = $result->first();
-        $filename = 'photos/' . $album->url . '/' . $photo->url;
-        if (file_exists($filename)) unlink($filename);
+
+        PhotoHelper::deletePhotoFromDisk($photo);
 
         $photo->delete();
         return response()->json(null, 204);

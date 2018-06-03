@@ -7,7 +7,8 @@ import Album from './Album';
 import AddAlbum from './AddAlbum';
 import AlbumEditor from './AlbumEditor';
 
-import classes from './Admin.css';
+import classes_site from './Site.css';
+import classes_admin from './Admin.css';
 
 class Admin extends React.Component {
 

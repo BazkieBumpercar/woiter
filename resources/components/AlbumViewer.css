@@ -7,14 +7,14 @@
 }
 
 .photo {
+    position: relative;
     border: 1px solid #7a8f97;
     margin-top: 16px;
     margin-bottom: 16px;
 }
 
-.inline {
-    display: inline-block;
-    width: 90%;
+.image {
+    max-width: 512px;
 }
 
 .albumClose {

@@ -55505,10 +55505,96 @@ module.exports = isObject;
 /* 62 */,
 /* 63 */,
 /* 64 */,
-/* 65 */,
-/* 66 */,
-/* 67 */,
-/* 68 */,
+/* 65 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(66);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(42)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../node_modules/css-loader/index.js!./AlbumViewer.css", function() {
+			var newContent = require("!!../../node_modules/css-loader/index.js!./AlbumViewer.css");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 66 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(41)(false);
+// imports
+
+
+// module
+exports.push([module.i, ".albumViewer {\r\n    position: relative;\r\n    width: 80%;\r\n    border: 1px solid #7a8f97;\r\n    padding: 20px;\r\n    margin-left: 10px;\r\n}\r\n\r\n.photo {\r\n    position: relative;\r\n    border: 1px solid #7a8f97;\r\n    margin-top: 16px;\r\n    margin-bottom: 16px;\r\n}\r\n\r\n.image {\r\n    max-width: 512px;\r\n}\r\n\r\n.albumClose {\r\n    position: absolute;\r\n    top: 10px;\r\n    right: 10px;\r\n}\r\n\r\n.albumClose:hover {\r\n    cursor: pointer;\r\n    text-decoration: underline;\r\n}", ""]);
+
+// exports
+
+
+/***/ }),
+/* 67 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(68);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(42)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../node_modules/css-loader/index.js!./Site.css", function() {
+			var newContent = require("!!../../node_modules/css-loader/index.js!./Site.css");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 68 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(41)(false);
+// imports
+
+
+// module
+exports.push([module.i, "html, body {\r\n    background-color: #fff;\r\n    height: max-content;\r\n}\r\n\r\nbody {\r\n    margin: 1%;\r\n    padding: 0;\r\n    color: #21282b;\r\n    font-family: sans-serif;\r\n    font-size: medium;\r\n}\r\n\r\np {\r\n    margin-top: 0.0em;\r\n    margin-bottom: 0.4em;\r\n}\r\n\r\n.links > a {\r\n    color: #2c4863;\r\n    text-decoration: underline;\r\n}\r\n\r\n.bigtext {\r\n    font-size: large;\r\n}\r\n\r\n.root {\r\n    width: 100%;\r\n}\r\n\r\n.content {\r\n    display: flex;\r\n    flex-direction: row;\r\n}\r\n\r\n.albums {\r\n    margin-left: auto;\r\n    margin-right: auto;\r\n    width: 20%;\r\n    display: flex;\r\n    flex-direction: column;\r\n    flex-wrap: nowrap;\r\n}\r\n\r\n.album {\r\n    position: relative;\r\n    margin-left: auto;\r\n    margin-right: auto;\r\n    margin-bottom: 4%;\r\n    width: 80%;\r\n    border: 1px solid #7a8f97;\r\n    padding: 10%;\r\n}\r\n\r\n.album:hover {\r\n    cursor: pointer;\r\n}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
 /* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -55552,8 +55638,10 @@ __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Album__ = __webpack_require__(57);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__AddAlbum__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__AlbumEditor__ = __webpack_require__(78);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Admin_css__ = __webpack_require__(87);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Admin_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__Admin_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Site_css__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Site_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__Site_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Admin_css__ = __webpack_require__(87);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Admin_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__Admin_css__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -55561,6 +55649,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -57854,8 +57943,10 @@ module.exports = Agent;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dropzone__ = __webpack_require__(79);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__AlbumEditor_css__ = __webpack_require__(85);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__AlbumEditor_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__AlbumEditor_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__AlbumViewer_css__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__AlbumViewer_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__AlbumViewer_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__AlbumEditor_css__ = __webpack_require__(85);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__AlbumEditor_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__AlbumEditor_css__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -57863,6 +57954,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -57910,7 +58002,7 @@ var AlbumEditor = function (_React$Component) {
 
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
-                { className: 'albumEditor' },
+                { className: 'albumViewer' },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
                     null,
@@ -57964,7 +58056,7 @@ var AlbumEditor = function (_React$Component) {
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'p',
                             null,
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: "photos/" + _this3.props.albumData.url + "/" + photo.url })
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { className: 'image', src: "photos/" + _this3.props.albumData.url + "/" + photo.url })
                         )
                     );
                 }),
@@ -59354,7 +59446,7 @@ exports = module.exports = __webpack_require__(41)(false);
 
 
 // module
-exports.push([module.i, ".albumEditor {\r\n    position: relative;\r\n    width: 80%;\r\n    border: 1px solid #7a8f97;\r\n    padding: 20px;\r\n    margin-left: 10px;\r\n}\r\n\r\n.photo {\r\n    position: relative;\r\n    border: 1px solid #7a8f97;\r\n    margin-top: 16px;\r\n    margin-bottom: 16px;\r\n}\r\n\r\n.albumClose {\r\n    position: absolute;\r\n    top: 10px;\r\n    right: 10px;\r\n}\r\n\r\n.albumClose:hover {\r\n    cursor: pointer;\r\n    text-decoration: underline;\r\n}\r\n\r\n.photoDelete {\r\n    position: absolute;\r\n    top: 10px;\r\n    right: 10px;\r\n}\r\n\r\n.photoDelete:hover {\r\n    cursor: pointer;\r\n    text-decoration: underline;\r\n}\r\n\r\n.fullwidth {\r\n    width: 100%;\r\n}\r\n\r\n.imageDropZone {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    width: 100%;\r\n    height: 80px;\r\n    border: 3px dotted #81b7ce;\r\n    margin: auto;\r\n}\r\n\r\n.imageDropZone:active {\r\n    background-color: red;\r\n}", ""]);
+exports.push([module.i, ".photoDelete {\r\n    position: absolute;\r\n    top: 10px;\r\n    right: 10px;\r\n}\r\n\r\n.photoDelete:hover {\r\n    cursor: pointer;\r\n    text-decoration: underline;\r\n}\r\n\r\n.fullwidth {\r\n    width: 100%;\r\n}\r\n\r\n.imageDropZone {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    width: 100%;\r\n    height: 80px;\r\n    border: 3px dotted #81b7ce;\r\n    margin: auto;\r\n}\r\n\r\n.imageDropZone:active {\r\n    background-color: red;\r\n}", ""]);
 
 // exports
 
@@ -59399,7 +59491,7 @@ exports = module.exports = __webpack_require__(41)(false);
 
 
 // module
-exports.push([module.i, ".content {\r\n    display: flex;\r\n    flex-direction: row;\r\n}\r\n\r\n.albums {\r\n    margin-left: auto;\r\n    margin-right: auto;\r\n    width: 20%;\r\n    display: flex;\r\n    flex-direction: column;\r\n    flex-wrap: nowrap;\r\n}\r\n\r\n.album {\r\n    position: relative;\r\n    margin-left: auto;\r\n    margin-right: auto;\r\n    margin-bottom: 4%;\r\n    width: 80%;\r\n    border: 1px solid #7a8f97;\r\n    padding: 10%;\r\n}\r\n\r\n.album:hover {\r\n    cursor: pointer;\r\n}\r\n\r\n.albumDelete {\r\n    position: absolute;\r\n    top: 10px;\r\n    right: 10px;\r\n}\r\n\r\n.albumDelete:hover {\r\n    cursor: pointer;\r\n    text-decoration: underline;\r\n}\r\n", ""]);
+exports.push([module.i, ".albumDelete {\r\n    position: absolute;\r\n    top: 10px;\r\n    right: 10px;\r\n}\r\n\r\n.albumDelete:hover {\r\n    cursor: pointer;\r\n    text-decoration: underline;\r\n}\r\n", ""]);
 
 // exports
 
