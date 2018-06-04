@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import Dropzone from 'react-dropzone';
 
-import classes_albumviewer from './AlbumViewer.css';
-import classes_albumeditor from './AlbumEditor.css';
+import classes_albumviewer from './css/AlbumViewer.css';
+import classes_albumeditor from './css/AlbumEditor.css';
 
 class AlbumEditor extends React.Component {
 
@@ -35,12 +35,12 @@ class AlbumEditor extends React.Component {
         return (
             <div className='albumViewer'>
                 <div>
-                    <input type="text" className="bigtext fullwidth" value={ this.state.album.title }
+                    <input type="text" className="bigtext quitewide" value={ this.state.album.title }
                         onChange={ (event) => this.setState({album: {title: event.target.value}}) }
                         onBlur={ (event) => this.props.albumTitleChangeHandler(event.target.value) } />
                 </div>
                 <div>
-                    <textarea className="fullwidth" value={ this.state.album.description }
+                    <textarea className="quitewide" value={ this.state.album.description }
                         onChange={ (event) => this.setState({album: {description: event.target.value}}) }
                         onBlur={ (event) => this.props.albumDescriptionChangeHandler(event.target.value) } />
                 </div>
@@ -51,8 +51,16 @@ class AlbumEditor extends React.Component {
                                 { this.state.confirmDelete[index] == false && <div className='photoDelete' onClick={ proxy => { proxy.stopPropagation(); let confirmDelete = [...this.state.confirmDelete]; confirmDelete[index] = true; this.setState({confirmDelete: confirmDelete}); } }>DELETE</div> }
                                 { this.state.confirmDelete[index] == true && <div className='photoDelete' onClick={ proxy => { proxy.stopPropagation(); this.props.deletePhotoHandler(photo.id, this) } } onMouseOut={ () => { let confirmDelete = [...this.state.confirmDelete]; confirmDelete[index] = false; this.setState({confirmDelete: confirmDelete}) } }>R U SURE?!</div> }
                                 {/*<div className='photoDelete' onClick={ () => this.props.deletePhotoHandler(photo.id, this) }>DELETE</div>*/}
-                                <p className='bigtext'>{ photo.title }</p>
-                                <p>{ photo.description }</p>
+                                <div>
+                                    <input type="text" className="bigtext quitewide" value={ photo.title }
+                                        onChange={ (event) => { let photos = [...this.state.photos]; photos[index].title = event.target.value; this.setState({photos: photos}) } }
+                                        onBlur={ (event) => this.props.photoTitleChangeHandler(photo.id, event.target.value) } />
+                                </div>
+                                <div>
+                                    <textarea className="quitewide" value={ photo.description }
+                                        onChange={ (event) => { let photos = [...this.state.photos]; photos[index].description = event.target.value; this.setState({photos: photos}) } }
+                                        onBlur={ (event) => this.props.photoDescriptionChangeHandler(photo.id, event.target.value) } />
+                                </div>
                                 <p><img className='image' src={ "photos/" + this.props.albumData.url + "/" + photo.url } /></p>
                             </div>
                         )

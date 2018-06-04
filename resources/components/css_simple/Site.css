@@ -16,7 +16,7 @@ p {
     margin-bottom: 0.4em;
 }
 
-.links > a {
+a {
     color: #2c4863;
     text-decoration: underline;
 }
@@ -50,7 +50,8 @@ p {
     margin-bottom: 4%;
     width: 80%;
     border: 1px solid #7a8f97;
-    padding: 10%;
+    padding: 6%;
+    padding-top: 20px;
 }
 
 .album:hover {

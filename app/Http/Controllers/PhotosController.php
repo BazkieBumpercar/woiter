@@ -33,6 +33,16 @@ class PhotosController extends Controller {
         return $photos;
     }
 
+    public function getThumbnailsByAlbumId(Album $album) {
+        //$result = DB::table('photos')->orderBy('id')->get('filename')->where('album_id', $album['id']);
+        $photos = Photo::where('album_id', '=', $album['id'])->get();
+        $thumbnails = [];
+        foreach($photos as $photo) {
+            $thumbnails[] = PhotoHelper::smallifyUri($photo->url);
+        }
+        return $thumbnails;
+    }
+
     public function store(Request $request) {
         $this->validate($request, [
             'title' => 'required|max:255',

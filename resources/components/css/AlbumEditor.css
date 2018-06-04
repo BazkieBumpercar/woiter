@@ -13,6 +13,10 @@
     width: 100%;
 }
 
+.quitewide {
+    width: 80%;
+}
+
 .imageDropZone {
     display: flex;
     justify-content: center;

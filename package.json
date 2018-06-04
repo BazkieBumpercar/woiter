@@ -22,7 +22,9 @@
         "react-dom": "^16.2.0"
     },
     "dependencies": {
+        "laravel-echo": "^1.4.0",
         "npm": "^6.1.0",
+        "pusher-js": "^4.2.2",
         "react-dropzone": "^4.2.9",
         "superagent": "^3.8.3"
     }
