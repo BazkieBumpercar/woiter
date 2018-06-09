@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Dropzone from 'react-dropzone';
 
 import classes_albumviewer from './css/AlbumViewer.css';
@@ -66,7 +66,13 @@ class AlbumEditor extends React.Component {
                         )
                     }
                 )}
-                <Dropzone className='imageDropZone' disablePreview={true} activeStyle={{backgroundColor: '#aaffbb'}} multiple={true} accept="image/*, video/*" onDrop={ (files) => this.props.addPhotosHandler(files, this) }>
+                <Dropzone className='imageDropZone'
+                    disablePreview={true}
+                    activeStyle={{backgroundColor: '#aaffbb'}}
+                    multiple={true}
+                    accept="image/*,video/*,.jpg,.png,.gif,.mp4,.mkv,.avi,.mpg"
+                    onDrop={ (files) => this.props.addPhotosHandler(files, this) }
+                >
                     Drop new photos here
                 </Dropzone>
             </div>

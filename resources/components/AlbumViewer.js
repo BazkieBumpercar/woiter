@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 import classes from './css/AlbumViewer.css';
 
@@ -17,16 +17,19 @@ class AlbumViewer extends React.Component {
 
     fetchPhotos(albumId) {
         fetch('api/photos/' + albumId)
-            .then(response => { return response.json(); } )
-            .then(photos => {
-                    this.setState({ photos: photos })
-                  });
+        .then(response => { return response.json(); } )
+        .then(photos => {
+                this.setState({ photos: photos })
+                }
+        );
     }
 
     render() {
         return (
             <div className='albumViewer'>
                 <h2>{ this.props.albumData.title }</h2>
+                <h3>{ this.props.albumData.description }</h3>
+                <br />
                 <div className='albumClose' onClick={ () => this.props.closeHandler() }>CLOSE</div>
                 { this.state.photos.map(photo => {
                     return (

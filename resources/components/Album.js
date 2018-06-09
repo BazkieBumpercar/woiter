@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
+import getUrlParams from '../assets/urlparams';
 
 class Album extends React.Component {
 
@@ -17,7 +18,7 @@ class Album extends React.Component {
         return (
             <div className='album' onClick={ () => this.props.clickHandler() } key={ this.props.album.id } >
                 <h2>{ this.props.album.title }</h2>
-                <p>{ this.props.album.description }</p>
+                { getUrlParams('authcode') && <p>{ this.props.album.description }</p> }
                 <div className="thumbCollection">
                     {/*{ this.props.thumbnails != undefined && this.props.thumbnails.map((thumb, index) => {*/}
                     { this.props.thumbnails != undefined && _.sampleSize(this.props.thumbnails, 3).map((thumb, index) => {
@@ -26,8 +27,8 @@ class Album extends React.Component {
                         );
                     }) }
                 </div>
-                { (this.props.loggedIn && this.state.confirmDelete == false) && <div className='albumDelete' onClick={ proxy => { proxy.stopPropagation(); this.setState({confirmDelete: true}); } }>DELETE</div> }
-                { (this.props.loggedIn && this.state.confirmDelete == true) && <div className='albumDelete' onClick={ proxy => { proxy.stopPropagation(); this.props.deleteHandler(); } } onMouseOut={ () => this.setState({confirmDelete: false}) }>R U SURE?!</div> }
+                { (getUrlParams('authcode') && this.state.confirmDelete == false) && <div className='albumDelete' onClick={ proxy => { proxy.stopPropagation(); this.setState({confirmDelete: true}); } }>DELETE</div> }
+                { (getUrlParams('authcode') && this.state.confirmDelete == true) && <div className='albumDelete' onClick={ proxy => { proxy.stopPropagation(); this.props.deleteHandler(); } } onMouseOut={ () => this.setState({confirmDelete: false}) }>R U SURE?!</div> }
             </div>
         );
     }

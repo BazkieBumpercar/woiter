@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
 import Album from './Album';
-import AddAlbum from './AddAlbum';
 import AlbumViewer from './AlbumViewer';
 
 import classes from './css/Site.css';
@@ -48,7 +47,7 @@ class Site extends React.Component {
     }
 
     viewAlbum(albumId) {
-        var album = fetch('api/album/' + albumId)
+        fetch('api/album/' + albumId)
         .then(response => { return response.json(); })
         .then(album => this.setState({
             viewAlbumId: albumId,
@@ -74,20 +73,24 @@ class Site extends React.Component {
         : undefined;
 
         return (
-            <div className='content'>
-                <div className='albums'>
-                    { this.state.albums.map((album, index) => {
-                        return (
-                            <Album key={ album.id }
-                                album={ album }
-                                thumbnails={ this.state.thumbnails[index] }
-                                clickHandler={ () => this.viewAlbum(album.id) }
-                            />
-                        );
-                    }) }
-                    { this.state.loggedIn ? <AddAlbum key='0' onAddAlbum={ () => this.addAlbum() } /> : null }
+            <div className='wrapper'>
+                <div className='title'>
+                    <h1 onClick={ () => this.closeAlbumViewer() }>Wouter Grevink <span style={{ color: 'rgba(0, 0, 0, 0.4)' }}>fotografie</span></h1>
                 </div>
-                { albumViewer }
+                <div className='content'>
+                    <div className='albums'>
+                        { this.state.albums.map((album, index) => {
+                            return (
+                                <Album key={ album.id }
+                                    album={ album }
+                                    thumbnails={ this.state.thumbnails[index] }
+                                    clickHandler={ () => this.viewAlbum(album.id) }
+                                />
+                            );
+                        }) }
+                    </div>
+                    { albumViewer }
+                </div>
             </div>
         );
     }

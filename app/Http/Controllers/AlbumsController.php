@@ -10,6 +10,7 @@ use App\Photo;
 
 use App\Utility\StringHelper;
 use App\Utility\PhotoHelper;
+use App\Utility\AuthHelper;
 
 class AlbumsController extends Controller
 {
@@ -23,6 +24,9 @@ class AlbumsController extends Controller
     }
 
     public function store(Request $request) {
+        
+        if ($request->header('authcode') != AuthHelper::getAuthCode()) return response()->json(null, 500);
+
         $this->validate($request, [
             'title' => 'required|max:255',
             'description' => 'max:255',
@@ -40,11 +44,17 @@ class AlbumsController extends Controller
     }
 
     public function update(Request $request, Album $album) {
+
+        if ($request->header('authcode') != AuthHelper::getAuthCode()) return response()->json(null, 500);
+
         $album->update($request->all());
         return response()->json($album, 200);
     }
 
-    public function delete(Album $album) {
+    public function delete(Request $request, Album $album) {
+
+        if ($request->header('authcode') != AuthHelper::getAuthCode()) return response()->json(null, 500);
+
         //$result = DB::table('photos')->get()->where('album_id', $album['id']);
         $photos = Photo::where('album_id', '=', $album['id'])->get();
         foreach($photos as $photo) {

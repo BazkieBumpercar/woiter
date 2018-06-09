@@ -18,20 +18,21 @@ p {
 }
 
 h1 {
+    font-family: 'Viga', sans-serif;
     margin-top: 0.0em;
-    margin-bottom: 0.8em;
-    font-weight: 700;
+    margin-bottom: 0.7em;
+    font-weight: 400;
 }
 
 h2 {
     margin-top: 0.0em;
-    margin-bottom: 0.6em;
-    font-weight: 500;
+    margin-bottom: 0.3em;
+    font-weight: 600;
 }
 
 h3 {
     margin-top: 0.0em;
-    margin-bottom: 0.4em;
+    margin-bottom: 0.2em;
     font-weight: 400;
 }
 
@@ -46,12 +47,38 @@ a {
 
 .root {
     width: 100%;
+    min-width: 600px;
     max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
 }
 
-.content {
+.wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper .title {
+    background-color: #f3a05c;
+    color: #000000;
+    position: relative;
+    text-align: left;
+    vertical-align: middle;
+    height: 64px;
+    line-height: 64px;
+    margin-left: 0%;
+    margin-right: 0%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    padding-left: 3%;
+    padding-right: 3%;
+}
+
+.wrapper .title :hover {
+    cursor: pointer;
+}
+
+.wrapper .content {
     display: flex;
     flex-direction: row;
 }
@@ -59,8 +86,7 @@ a {
 .albums {
     margin-left: auto;
     margin-right: auto;
-    width: 30%;
-    min-width: 284px;
+    width: 28%;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -68,10 +94,8 @@ a {
 
 .album {
     position: relative;
-    margin-left: auto;
-    margin-right: auto;
     margin-bottom: 2%;
-    width: 70%;
+    width: 100%;
     border: 0px;
     padding: 6%;
     padding-top: 20px;
@@ -92,6 +116,6 @@ a {
     padding: 0px;
     margin-top: 0px;
     margin-left: 0px;
-    margin-bottom: 2px;
-    margin-right: 2px;
+    margin-bottom: 4px;
+    margin-right: 4px;
 }

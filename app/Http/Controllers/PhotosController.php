@@ -10,6 +10,7 @@ use Intervention\Image\ImageManagerStatic as Image;
 
 use App\Utility\StringHelper;
 use App\Utility\PhotoHelper;
+use App\Utility\AuthHelper;
 
 use App\Photo;
 use App\Album;
@@ -44,6 +45,9 @@ class PhotosController extends Controller {
     }
 
     public function store(Request $request) {
+        
+        if ($request->header('authcode') != AuthHelper::getAuthCode()) return response()->json(null, 500);
+
         $this->validate($request, [
             'title' => 'required|max:255',
             'album_id' => 'required',
@@ -61,18 +65,21 @@ class PhotosController extends Controller {
     }
 
     public function store_imagedata(Request $request) {
+
+        if ($request->header('authcode') != AuthHelper::getAuthCode()) return response()->json(null, 500);
+
         $this->validate($request, [
-            'imagedata' => 'required'//|image|mimes:jpeg,jpg,png,gif'
+            'imagedata' => 'required|mimes:jpeg,jpg,png,gif,tiff,tga,avi,mpeg,mpg,mp4|max:20000'
         ]);
         $image = Image::make($request['imagedata']);
 
         if (!file_exists('photos')) {
-            mkdir('photos', 0777, true);
+            if (!mkdir('photos', 0777, true)) return response()->json("could not create photos directory", 500);
         }
 
         $directory = $request['directory'];
         if (!file_exists('photos/' . $directory)) {
-            mkdir('photos/' . $directory, 0777, true);
+            if (!mkdir('photos/' . $directory, 0777, true)) return response()->json("could not create photos/" . $directory . " directory", 500);
         }
 
         $filename = $request['filename'];
@@ -81,17 +88,22 @@ class PhotosController extends Controller {
         // $image_thumb = Image::cache(function($image) {
         //     $image->make('photos/' . $directory . '/' . $filename
         // });
-        $image->fit(64)->greyscale()->save(PhotoHelper::smallifyUri($uri));
+        $image->fit(64)->contrast(-40)->brightness(-10)->save(PhotoHelper::smallifyUri($uri));
 
         return response()->json(null, 201);
     }
 
     public function update(Request $request, Photo $photo) {
+
+        if ($request->header('authcode') != AuthHelper::getAuthCode()) return response()->json(null, 500);
+
         $photo->update($request->all());
         return response()->json($photo, 200);
     }
 
-    public function delete(Photo $photo) {
+    public function delete(Request $request, Photo $photo) {
+
+        if ($request->header('authcode') != AuthHelper::getAuthCode()) return response()->json(null, 500);
 
         PhotoHelper::deletePhotoFromDisk($photo);
 
