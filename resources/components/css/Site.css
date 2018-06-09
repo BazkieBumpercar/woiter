@@ -58,14 +58,13 @@ a {
     flex-direction: column;
 }
 
-.wrapper .title {
+.wrapper .header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     background-color: #f3a05c;
     color: #000000;
-    position: relative;
-    text-align: left;
-    vertical-align: middle;
     height: 64px;
-    line-height: 64px;
     margin-left: 0%;
     margin-right: 0%;
     margin-top: 1%;
@@ -74,7 +73,26 @@ a {
     padding-right: 3%;
 }
 
-.wrapper .title :hover {
+.wrapper .header .title {
+    align-self: flex-start;
+    margin-top: auto;
+    margin-bottom: auto;
+    height: 64px;
+    line-height: 64px;
+}
+
+.wrapper .header .flexfiller {
+    flex-grow: 1;
+}
+
+.wrapper .header .social {
+    align-self: flex-end;
+    margin-top: auto;
+    margin-bottom: auto;
+    line-height: 0px;
+}
+
+.wrapper .header :hover {
     cursor: pointer;
 }
 

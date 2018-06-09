@@ -74,8 +74,17 @@ class Site extends React.Component {
 
         return (
             <div className='wrapper'>
-                <div className='title'>
-                    <h1 onClick={ () => this.closeAlbumViewer() }>Wouter Grevink <span style={{ color: 'rgba(0, 0, 0, 0.4)' }}>fotografie</span></h1>
+                <div className='header'>
+                    <div className='title'>
+                        <h1 onClick={ () => this.closeAlbumViewer() }>Wouter Grevink <span style={{ color: 'rgba(0, 0, 0, 0.4)' }}>fotografie</span></h1>
+                    </div>
+                    <div className='flexfiller'></div>
+                    <div className='social'>
+                        <a href="http://www.facebook.com/woiter" target='_blank'><img src='icons/icon_fb.png' /></a>&nbsp;
+                        <a href="http://instagram.com/woiter" target='_blank'><img src='icons/icon_instagram.png' /></a>&nbsp;
+                        <a href="https://www.flickr.com/photos/93474006@N02/" target='_blank'><img src='icons/icon_flickr.png' /></a>&nbsp;
+                        <a href="http://woiter.zoom.nl/" target='_blank'><img src='icons/icon_zoomnl.png' /></a>
+                    </div>
                 </div>
                 <div className='content'>
                     <div className='albums'>

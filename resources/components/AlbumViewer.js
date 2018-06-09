@@ -2,6 +2,9 @@ import React from 'react'
 
 import classes from './css/AlbumViewer.css';
 
+import '../assets/lightbox2/js/lightbox.js';
+import '../assets/lightbox2/css/lightbox.css';
+
 class AlbumViewer extends React.Component {
 
     constructor(props) {
@@ -36,7 +39,11 @@ class AlbumViewer extends React.Component {
                         <div key={ photo.id } className='photo'>
                             <h3>{ photo.title }</h3>
                             <p>{ photo.description }</p>
-                            <p><img className="image" src={ "photos/" + this.props.albumData.url + "/" + photo.url } /></p>
+                            <p>
+                                <a href={ "photos/" + this.props.albumData.url + "/" + photo.url } data-lightbox={ photo.id } data-title={ photo.name }>
+                                    <img className="image" src={ "photos/" + this.props.albumData.url + "/" + photo.url } />
+                                </a>
+                            </p>
                         </div>
                     );
                 }) }

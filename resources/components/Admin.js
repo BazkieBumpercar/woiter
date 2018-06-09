@@ -229,8 +229,10 @@ class Admin extends React.Component {
 
         return (
             <div className='wrapper'>
-                <div className='title'>
-                    <h1 onClick={ () => this.closeAlbumViewer() }>Admin pret</h1>
+                <div className='header'>
+                    <div className='title'>
+                        <h1 onClick={ () => this.closeAlbumViewer() }>Admin pret</h1>
+                    </div>
                 </div>
                 <div className='content'>
                     <div className='albums'>

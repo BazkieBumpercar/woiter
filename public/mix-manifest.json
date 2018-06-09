@@ -4,5 +4,6 @@
     "/css/site.css": "/css/site.css",
     "/css/admin.css": "/css/admin.css",
     "/css/albumviewer.css": "/css/albumviewer.css",
-    "/css/albumeditor.css": "/css/albumeditor.css"
+    "/css/albumeditor.css": "/css/albumeditor.css",
+    "/css/lightbox.css": "/css/lightbox.css"
 }

@@ -5,6 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:300,400,600|Viga:400" rel="stylesheet">
+        <link rel="shortcut icon" href="{{{ asset('images/favicon.ico') }}}">
 
         <title>Woiters wappie fotosite</title>
 
