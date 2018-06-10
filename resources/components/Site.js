@@ -80,10 +80,10 @@ class Site extends React.Component {
                     </div>
                     <div className='flexfiller'></div>
                     <div className='social'>
-                        <a href="http://www.facebook.com/woiter" target='_blank'><img src='icons/icon_fb.png' /></a>&nbsp;
-                        <a href="http://instagram.com/woiter" target='_blank'><img src='icons/icon_instagram.png' /></a>&nbsp;
-                        <a href="https://www.flickr.com/photos/93474006@N02/" target='_blank'><img src='icons/icon_flickr.png' /></a>&nbsp;
-                        <a href="http://woiter.zoom.nl/" target='_blank'><img src='icons/icon_zoomnl.png' /></a>
+                        <a href="http://www.facebook.com/woiter" target='_blank'><img src='images/icons/icon_fb.png' /></a>&nbsp;
+                        <a href="http://instagram.com/woiter" target='_blank'><img src='images/icons/icon_instagram.png' /></a>&nbsp;
+                        <a href="https://www.flickr.com/photos/93474006@N02/" target='_blank'><img src='images/icons/icon_flickr.png' /></a>&nbsp;
+                        <a href="http://woiter.zoom.nl/" target='_blank'><img src='images/icons/icon_zoomnl.png' /></a>
                     </div>
                 </div>
                 <div className='content'>
