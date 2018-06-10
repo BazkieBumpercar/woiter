@@ -136,14 +136,19 @@ class Admin extends React.Component {
                         'url': image['name'],
                         'published': false,
                     })
-                }).catch((err) => { console.log("error uploading photo metadata:" + err) })
+                })
+                .catch((err) => { console.log("error uploading photo metadata:" + err) })
+                .then(() => {
+                    count++;
+                    if (count === files.length) reload();
+                })
 
             ).catch((err) => { console.log("error uploading photo data:" + err) })//.then(response => { return response.json(); })
             //.then(window.URL.revokeObjectURL(image.preview))
             //.then(() => senderComponent.fetchPhotos(this.state.viewAlbumId));
 
-            count++;
-            if (count === files.length) reload();
+            //count++;
+            //if (count === files.length) reload();
         }
 
         );//.then(() => senderComponent.fetchPhotos(this.state.viewAlbumId));
