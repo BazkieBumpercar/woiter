@@ -11,7 +11,8 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.react('resources/site.js', 'public/js').sourceMaps()
+mix.options({ imgLoaderOptions: { enable: false } })
+   .react('resources/site.js', 'public/js').sourceMaps()
    .react('resources/admin.js', 'public/js').sourceMaps()
    .copyDirectory('resources/assets/icons', 'public/icons')
    //.react('resources/assets/bootstrap.js', 'public/js')
