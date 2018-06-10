@@ -18,7 +18,7 @@ class Album extends React.Component {
         return (
             <div className='album' onClick={ () => this.props.clickHandler() } key={ this.props.album.id } >
                 <h2>{ this.props.album.title }</h2>
-                { getUrlParams('authcode') && <p>{ this.props.album.description }</p><br> }
+                { getUrlParams('authcode') && <p>{ this.props.album.description }<br /></p> }
                 <div className="thumbCollection">
                     {/*{ this.props.thumbnails != undefined && this.props.thumbnails.map((thumb, index) => {*/}
                     { this.props.thumbnails != undefined && _.sampleSize(this.props.thumbnails, 3).map((thumb, index) => {
