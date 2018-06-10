@@ -56,7 +56,7 @@ class Admin extends React.Component {
             }
         })
         .then(albumId == this.state.viewAlbumId && this.closeAlbumViewer())
-        .then(this.reloadAlbums());
+        .then(() => this.reloadAlbums());
     }
 
     deletePhoto(photoId, senderComponent) {
@@ -91,7 +91,7 @@ class Admin extends React.Component {
         })
         .then(response => { return response.json() })
         .then(response => { response['id'] != undefined && this.viewAlbum(response['id']) })
-        .then(this.reloadAlbums())
+        .then(() => this.reloadAlbums())
     }
 
     closeAlbumViewer() {
@@ -167,7 +167,7 @@ class Admin extends React.Component {
             body: JSON.stringify({
                 'title': newTitle
             })
-        }).then(this.reloadAlbums());
+        }).then(() => this.reloadAlbums());
     }
 
     albumChangeDescription(newDescription) {
@@ -183,7 +183,7 @@ class Admin extends React.Component {
             body: JSON.stringify({
                 'description': newDescription
             })
-        }).then(this.reloadAlbums());
+        }).then(() => this.reloadAlbums());
     }
 
     photoChangeTitle(photoId, newTitle) {

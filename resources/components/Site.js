@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import { Router, Route, Switch } from 'react-router'
 
 import Album from './Album';
 import AlbumViewer from './AlbumViewer';

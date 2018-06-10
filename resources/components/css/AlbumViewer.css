@@ -1,9 +1,17 @@
+@keyframes zoomhoriz {
+    0% { width: 40%; }
+    100% { width: 72%; }
+}
+
 .albumViewer {
     position: relative;
     width: 72%;
     border: 0px;
     padding: 20px;
     margin-left: 10px;
+
+    animation-name: zoomhoriz;
+    animation-duration: 1s;
 }
 
 .photo {
