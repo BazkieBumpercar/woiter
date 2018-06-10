@@ -7,7 +7,7 @@
         <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:300,400,600|Viga:400" rel="stylesheet">
         <link rel="shortcut icon" href="{{{ asset('images/favicon.ico') }}}">
 
-        <title>Woiters wappie fotosite</title>
+        <title>Wouter Grevink fotografie</title>
 
         <meta name="csrf-token" content="{{ csrf_token() }}">
     </head>
