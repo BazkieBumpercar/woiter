@@ -10,7 +10,7 @@ class AddAlbum extends React.Component {
         return(
             <div className='album' onClick={ () => this.handleClick() }>
                 <p style={{fontWeight: 'bold'}}>
-                    <a href="#">Add a new album</a>
+                    <a href="">Add a new album</a>
                 </p>
             </div>
         );
